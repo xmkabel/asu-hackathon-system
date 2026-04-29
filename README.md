@@ -15,13 +15,21 @@ This system simulates a complete hackathon platform where teams register, submit
 ```
 asu-hackathon-system/
 ├── src/
-│   └── main.cpp          # All program logic and function definitions
-│   └── globals.h         # Structs, array sizes, extern declarations
+│   ├── main.cpp           # Entry point, menu loop, global array definitions, pre-stored data
+│   ├── globals.h          # Structs, constants, extern declarations, function prototypes
+│   ├── auth.cpp           # Admin login and logout logic
+│   ├── teams.cpp          # Team registration
+│   ├── project.cpp        # Project title submission and updates
+│   ├── evaluation.cpp     # Adding evaluations with innovation, technical presentation scores
+│   ├── score.cpp          # Calculating final team scores from evaluations
+│   ├── ranking.cpp        # Sorting teams by final score and assigning ranks
+│   ├── report.cpp         # Displaying final report with all teams, scores, and winner
+│   └── fileio.cpp         # Loading all data from files on startup, saving on exit
 ├── data/
-│   ├── admins.txt        # Persisted admin records
-│   ├── teams.txt         # Persisted team records
-│   ├── judges.txt        # Persisted judge records
-│   └── evaluations.txt   # Persisted evaluation records
+│   ├── admins.txt         # Persisted admin records
+│   ├── teams.txt          # Persisted team records
+│   ├── judges.txt         # Persisted judge records
+│   └── evaluations.txt    # Persisted evaluation records
 └── README.md
 ```
 
