@@ -10,7 +10,7 @@ bool AdminLogin(Admin admins[], int adminscount)
     cin >> password;
     for (int i = 0; i < adminscount; i++)
     {
-        if ((username == admins[i].UserName) && (password == admins[i].password))
+        if ((username == admins[i].UserName) && (password == admins[i].Password))
         {
             return true;
         }
