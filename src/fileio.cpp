@@ -29,7 +29,6 @@ void saveTeams(Team teamsArr[], int teamsCount) {
 
 
 // Load admins data from file 
-#include "globals.h"
 void LoadAdmins(Admin admins[], int &usercount)
 {
     usercount = 0;
