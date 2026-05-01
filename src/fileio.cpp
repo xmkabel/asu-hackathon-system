@@ -26,3 +26,27 @@ void saveTeams(Team teamsArr[], int teamsCount) {
     teams_file.close(); // close file after writing
     cout << "Teams data saved successfully\n";
 }
+
+
+// Load admins data from file 
+#include "globals.h"
+void LoadAdmins(Admin admins[], int &usercount)
+{
+    usercount = 0;
+    ifstream infile;
+    infile.open("../data/admins.txt");
+
+    if (!infile)
+    {
+        cout << "Error opening file\n";
+        return;
+    }
+
+    while (usercount < ADMINS_SIZE && infile >> admins[usercount].AdminID >> admins[usercount].UserName >> admins[usercount].password)
+    {
+        usercount++;
+    }
+
+    infile.close();
+
+}
