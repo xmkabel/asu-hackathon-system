@@ -49,3 +49,28 @@ void LoadAdmins(Admin admins[], int &usercount)
     infile.close();
 
 }
+
+
+// Load teams data from teams.txt file
+void loadTeams(int& teamsCount, Team teamsArr[], ifstream& teams_file) {
+	teams_file.open("../data/teams.txt", ios::in);
+
+	if (!teams_file.is_open()) {
+		cout << "Failed to open teams file ... " << endl;
+		return;
+	}
+
+	for (int i = 0; !teams_file.eof(); i++) {
+		teams_file
+			>> teamsArr[i].TeamID
+			>> teamsArr[i].TeamName
+			>> teamsArr[i].UniversityName
+			>> teamsArr[i].NumberOfMembers
+			>> teamsArr[i].ProjectTitle
+			>> teamsArr[i].FinalScore
+			>> teamsArr[i].Rank;
+
+		teamsCount++;
+	}
+}
+
