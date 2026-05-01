@@ -57,6 +57,11 @@ struct Evaluation
 };
 
 // Global Variables (defined once in main.cpp)
+
+extern Admin admins[ADMINS_SIZE];
+extern int adminsCount;
+extern bool isAdminLoggedIn;
+
 extern Team teams[TEAMS_SIZE];
 extern int teamCount;
 
@@ -70,7 +75,7 @@ extern Evaluation evaluations[EVALUATIONS_SIZE];
 extern int evaluationsCount;
 
 // auth.cpp
-
+bool AdminLogin(Admin admins[], int adminscount);
 
 // teams.cpp
 int findTeamIndexById(int id);
@@ -80,17 +85,15 @@ void editTeam();
 void deleteTeam();
 
 //  project.cpp
-void submitProject(int TeamId, string ProjectTitle);
+void submitProject();
 
 //  fileIO.cpp
-void loadTeams(int& teamsCount, Team teamsArr[], ifstream& teams_file);
+void loadTeams(Team teamsArr[], int &teamsCount);
 void saveTeams(Team teamsArr[], int teamsCount);
 void loadJudges(Judge judges[], int &judgesCount);
-void saveJudges(Judge judges[], int judgesCount);
 void loadEvaluations(Evaluation evaluations[], int &evaluationsCount);
 void saveEvaluations(Evaluation evaluations[], int evaluationsCount);
 void loadAdmins(Admin admins[], int &adminsCount);
-void saveAdmins(Admin admins[], int adminsCount);
 
 // evaluation.cpp
 void addEvaluation();
