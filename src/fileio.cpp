@@ -1,18 +1,38 @@
 #include "globals.h"
 
+// Load teams data from teams.txt file
+void loadTeams(Team teamsArr[], int &teamsCount)
+{
+    ifstream teams_file("../data/teams.txt");
+
+    if (!teams_file.is_open())
+    {
+        cout << "Failed to open teams file ... " << endl;
+        return;
+    }
+
+    while (teams_file >> teamsArr[teamsCount].TeamID >> teamsArr[teamsCount].TeamName >> teamsArr[teamsCount].UniversityName >> teamsArr[teamsCount].NumberOfMembers >> teamsArr[teamsCount].ProjectTitle >> teamsArr[teamsCount].FinalScore >> teamsArr[teamsCount].Rank)
+    {
+        teamsCount++;
+    }
+}
+
 // Save all teams data to file
-void saveTeams(Team teamsArr[], int teamsCount) {
+void saveTeams(Team teamsArr[], int teamsCount)
+{
 
     ofstream teams_file;
     teams_file.open("../data/teams.txt", ios::out); // open file for writing
 
-    if (!teams_file.is_open()) {
+    if (!teams_file.is_open())
+    {
         cout << "File not opened\n";
         return; // stop if file failed to open
     }
 
     // write each team's data to the file
-    for (int i = 0; i < teamsCount; i++) {
+    for (int i = 0; i < teamsCount; i++)
+    {
         teams_file
             << teamsArr[i].TeamID << " "
             << teamsArr[i].TeamName << " "
@@ -27,50 +47,89 @@ void saveTeams(Team teamsArr[], int teamsCount) {
     cout << "Teams data saved successfully\n";
 }
 
-
-// Load admins data from file 
-void LoadAdmins(Admin admins[], int &usercount)
+void loadJudges(Judge judges[], int &judgesCount)
 {
-    usercount = 0;
-    ifstream infile;
-    infile.open("../data/admins.txt");
+    ifstream judges_file("../data/judges.txt");
 
-    if (!infile)
+    if (!judges_file.is_open())
+    {
+        cout << "Could not open judges.txt\n";
+        return;
+    }
+
+    while (
+        judges_file >> judges[judgesCount].JudgeID >> judges[judgesCount].JudgeName >> judges[judgesCount].Speciality >> judges[judgesCount].UserName >> judges[judgesCount].Password)
+    {
+        judgesCount++;
+    }
+
+    judges_file.close();
+}
+
+
+
+void loadEvaluations(Evaluation evaluations[], int &evaluationsCount)
+{
+    ifstream evaluations_file("../data/evaluations.txt");
+
+    if (!evaluations_file.is_open())
+    {
+        cout << "Could not open evaluations.txt\n";
+        return;
+    }
+
+    while (
+        evaluations_file >> evaluations[evaluationsCount].EvaluationID >> evaluations[evaluationsCount].TeamID >> evaluations[evaluationsCount].JudgeID >> evaluations[evaluationsCount].InnovationScore >> evaluations[evaluationsCount].TechnicalScore >> evaluations[evaluationsCount].PresentationScore >> evaluations[evaluationsCount].TotalScore)
+    {
+        evaluationsCount++;
+    }
+
+    evaluations_file.close();
+}
+
+void saveEvaluations(Evaluation evaluations[], int evaluationsCount)
+{
+    ofstream evaluations_file("../data/evaluations.txt");
+
+    if (!evaluations_file.is_open())
+    {
+        cout << "Could not save evaluations.txt\n";
+        return;
+    }
+
+    for (int i = 0; i < evaluationsCount; i++)
+    {
+        evaluations_file
+            << evaluations[i].EvaluationID << " "
+            << evaluations[i].TeamID << " "
+            << evaluations[i].JudgeID << " "
+            << evaluations[i].InnovationScore << " "
+            << evaluations[i].TechnicalScore << " "
+            << evaluations[i].PresentationScore << " "
+            << evaluations[i].TotalScore << endl;
+    }
+
+    evaluations_file.close();
+}
+
+// Load admins data from file
+void loadAdmins(Admin admins[], int &adminsCount)
+{
+
+    ifstream admins_file;
+    admins_file.open("../data/admins.txt");
+
+    if (!admins_file)
     {
         cout << "Error opening file\n";
         return;
     }
 
-    while (usercount < ADMINS_SIZE && infile >> admins[usercount].AdminID >> admins[usercount].UserName >> admins[usercount].Password)
+    while (adminsCount < ADMINS_SIZE && admins_file >> admins[adminsCount].AdminID >> admins[adminsCount].UserName >> admins[adminsCount].Password)
     {
-        usercount++;
+        adminsCount++;
     }
 
-    infile.close();
-
-}
-
-
-// Load teams data from teams.txt file
-void loadTeams(int& teamsCount, Team teamsArr[], ifstream& teams_file) {
-	teams_file.open("../data/teams.txt", ios::in);
-
-	if (!teams_file.is_open()) {
-		cout << "Failed to open teams file ... " << endl;
-		return;
-	}
-
-	for (int i = 0; !teams_file.eof(); i++) {
-		teams_file
-			>> teamsArr[i].TeamID
-			>> teamsArr[i].TeamName
-			>> teamsArr[i].UniversityName
-			>> teamsArr[i].NumberOfMembers
-			>> teamsArr[i].ProjectTitle
-			>> teamsArr[i].FinalScore
-			>> teamsArr[i].Rank;
-
-		teamsCount++;
-	}
+    admins_file.close();
 }
 
