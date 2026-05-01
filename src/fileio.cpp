@@ -41,7 +41,7 @@ void LoadAdmins(Admin admins[], int &usercount)
         return;
     }
 
-    while (usercount < ADMINS_SIZE && infile >> admins[usercount].AdminID >> admins[usercount].UserName >> admins[usercount].password)
+    while (usercount < ADMINS_SIZE && infile >> admins[usercount].AdminID >> admins[usercount].UserName >> admins[usercount].Password)
     {
         usercount++;
     }
