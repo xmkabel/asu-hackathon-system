@@ -83,7 +83,7 @@ void deleteTeam();
 void submitProject(int TeamId, string ProjectTitle);
 
 //  fileIO.cpp
-void loadTeams(Team teams[], int &teamsCount);
+void loadTeams(int& teamsCount, Team teamsArr[], ifstream& teams_file);
 void saveTeams(Team teamsArr[], int teamsCount);
 void loadJudges(Judge judges[], int &judgesCount);
 void saveJudges(Judge judges[], int judgesCount);
