@@ -109,6 +109,6 @@ void displayReport(int teamsCount, Team teamsArr[]);
 
 //validations.cpp
 int getValidInt();
-
+float getValidFloat();
 
 #endif
