@@ -107,4 +107,8 @@ void generateRanking(int teamsCount, Team teamsArr[]);
 //  report.cpp
 void displayReport(int teamsCount, Team teamsArr[]);
 
+//validations.cpp
+int getValidInt();
+
+
 #endif
