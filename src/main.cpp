@@ -36,7 +36,7 @@ void menu()
             }
         } while (!isAdminLoggedIn);
         int choice;
-        choice = getValidInt();
+        
         do
         {
             cout << "\n===== Hackathon Management System =====\n";
@@ -52,7 +52,7 @@ void menu()
             cout << "10. Logout\n";
             cout << "0.  Exit\n";
             cout << "Enter choice: ";
-            cin >> choice;
+            choice = getValidInt();
 
             switch (choice)
             {
