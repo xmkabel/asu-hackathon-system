@@ -26,14 +26,23 @@ void registerTeam() {
     }
 
     int id;
+    bool isAvailable;
+
     do {
         cout << "Enter Team ID: ";
-        cin >> id;
+        id = getValidInt();
 
-        if (!CheckID(id))
+        if (id <= 0) {
+            cout << "ID must be positive!\n";
+            isAvailable = false;
+            continue;
+        }
+
+        isAvailable = CheckID(id);
+        if (!isAvailable)
             cout << "ID already exists!\n";
 
-    } while (!CheckID(id));
+    } while (!isAvailable);
 
     teams[teamCount].TeamID = id;
 
@@ -44,7 +53,7 @@ void registerTeam() {
     getline(cin >> ws, teams[teamCount].UniversityName);
 
     cout << "Enter Number of Members: ";
-    cin >> teams[teamCount].NumberOfMembers;
+    teams[teamCount].NumberOfMembers = getValidInt();
 
     cout << "Enter Project Title: ";
     getline(cin >> ws, teams[teamCount].ProjectTitle);
@@ -78,7 +87,8 @@ void viewTeams() {
 void editTeam() {
     int id;
     cout << "Enter Team ID to edit: ";
-    cin >> id;
+
+    id = getValidInt();
 
     int index = findTeamIndexById(id);
 
@@ -97,7 +107,12 @@ void editTeam() {
         cout << "4. Edit Project Title\n";
         cout << "5. Exit Editing\n";
         cout << "Enter choice: ";
-        cin >> choice;
+
+        while (!(cin >> choice)) {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Invalid input. Enter a number: ";
+        }
 
         switch (choice) {
         case 1:
@@ -112,7 +127,7 @@ void editTeam() {
 
         case 3:
             cout << "Enter New Number of Members: ";
-            cin >> teams[index].NumberOfMembers;
+            teams[index].NumberOfMembers = getValidInt();
             break;
 
         case 4:
@@ -135,7 +150,8 @@ void editTeam() {
 void deleteTeam() {
     int id;
     cout << "Enter Team ID to delete: ";
-    cin >> id;
+
+    id = getValidInt();
 
     int index = findTeamIndexById(id);
 
