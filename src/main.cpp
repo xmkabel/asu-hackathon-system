@@ -36,6 +36,7 @@ void menu()
             }
         } while (!isAdminLoggedIn);
         int choice;
+        choice = getValidInt();
         do
         {
             cout << "\n===== Hackathon Management System =====\n";
@@ -73,7 +74,6 @@ void menu()
                 break;
             case 6:
                 addEvaluation();
-                cout << "Evaluation added.\n";
                 break;
             case 7:
                 calculateFinalScores(teamCount, teams, evaluationsCount, evaluations);
