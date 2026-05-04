@@ -4,7 +4,7 @@ void submitProject() {
     int TeamId;
     string ProjectTitle;
     cout << "Enter Team ID: ";
-    cin >> TeamId;
+    TeamId = getValidInt();
     cout << "Enter Project Title: ";
     cin.ignore();
     getline(cin, ProjectTitle);
