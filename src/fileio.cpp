@@ -15,6 +15,8 @@ void loadTeams(Team teamsArr[], int &teamsCount)
     {
         teamsCount++;
     }
+
+    teams_file.close();
 }
 
 // Save all teams data to file
