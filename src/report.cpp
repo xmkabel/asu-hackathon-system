@@ -1,6 +1,8 @@
 #include "globals.h"
 
 void displayReport(int teamsCount, Team teamsArr[]) {
+
+	if (teamsCount == 0) return;
 	Team winner = teamsArr[0];
 	cout << left
 		<< "  " << setw(4) << "Rank"
