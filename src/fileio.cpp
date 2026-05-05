@@ -11,7 +11,7 @@ void loadTeams(Team teamsArr[], int &teamsCount)
         return;
     }
 
-    while (teams_file >> teamsArr[teamsCount].TeamID >> teamsArr[teamsCount].TeamName >> teamsArr[teamsCount].UniversityName >> teamsArr[teamsCount].NumberOfMembers >> teamsArr[teamsCount].ProjectTitle >> teamsArr[teamsCount].FinalScore >> teamsArr[teamsCount].Rank)
+    while (teamsCount < TEAMS_SIZE && teams_file >> teamsArr[teamsCount].TeamID >> teamsArr[teamsCount].TeamName >> teamsArr[teamsCount].UniversityName >> teamsArr[teamsCount].NumberOfMembers >> teamsArr[teamsCount].ProjectTitle >> teamsArr[teamsCount].FinalScore >> teamsArr[teamsCount].Rank)
     {
         teamsCount++;
     }
